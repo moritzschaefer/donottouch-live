@@ -40,7 +40,7 @@ GET /
 # TODO
 
 - Add stories
-- Add cursor symbol
-- Beautiful drawing
+(- Beautiful drawing)
 - Optimize protocol (minimize data)
 - Use Websockets instead of HTTP pulls
+- Delete on inactivity

@@ -9,7 +9,6 @@ $.post('/', {}, function(data) {
     });
     // saves id globally
     id=data['id'];
-    console.log(data);
     // now set interval to update everything
     setInterval(function() {
         updatePosition();

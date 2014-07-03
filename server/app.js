@@ -33,11 +33,10 @@ app.put('/:id', function(req, res) {
     db.hmset(req.params.id, {x: req.body.x, y: req.body.y});
     res.send({});
 });
-//put post
-//
+app.use(express.static(__dirname + '/client'));
+
 var server = app.listen(3000, function() {
     console.log('Listening on port %d', server.address().port);
 });
 
 
-app.use(express.static(__dirname + '/client'));
