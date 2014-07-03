@@ -36,13 +36,16 @@ function updatePosition() {
 function updateCanvas() {
     var canvas = $('#render')[0];
     var ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    var im = new Image();
+    im.src = "images/pointer.png";
     $.get('/', function(data) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         data.forEach(function(element, index) {
             // print element
-            ctx.fillRect(element.x, element.y, 6,6);
+            ctx.drawImage(im, element.x, element.y);
+            //ctx.fillRect(element.x, element.y, 6,6);
         });
-    }, 'json')
+    }, 'json');
 
 }
 
