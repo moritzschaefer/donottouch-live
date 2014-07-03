@@ -10,9 +10,14 @@ $.post('/', {}, function(data) {
     // saves id globally
     id=data['id'];
     // now set interval to update everything
-    setInterval(function() {
-        updatePosition();
-        updateCanvas();
+    interval = setInterval(function() {
+        try {
+            updatePosition();
+            updateCanvas();
+        } catch (e) {
+            clearInterval(interval);
+            $('#debug-message').html('There was an error. Please reload.');
+        }
     }, 100);
 }, "json");
 
@@ -27,7 +32,12 @@ function updatePosition() {
                 dataType: 'json',
                 success: function(result) {
                     //nop
+                },
+                error: function(result) {
+                    clearInterval(interval);
+                    $('#debug-message').html('There was an error from the server. please reload');
                 }
+
         });
     }
 }
@@ -37,6 +47,7 @@ function updateCanvas() {
     var ctx = canvas.getContext('2d');
     var im = new Image();
     im.src = "images/pointer.png";
+    // TODO: add failfunction as in put here
     $.get('/', function(data) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         data.forEach(function(element, index) {
