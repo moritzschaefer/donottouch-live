@@ -1,0 +1,15 @@
+protocol:
+JSON
+
+POST /
+give me an ID
+Returns {id: }
+
+PUT /<id>
+{
+x: <int>,
+y: <int>,
+}
+
+GET /
+[x,y,x,y,x,y,x,y,...]
