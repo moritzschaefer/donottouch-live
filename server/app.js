@@ -40,3 +40,4 @@ var server = app.listen(3000, function() {
 });
 
 
+app.use(express.static(__dirname + '/client'));
