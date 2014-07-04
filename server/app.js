@@ -14,6 +14,10 @@ app.post('/', function(req, res) {
         db.del(val); // TODO: delete everything on startup rather than here
         db.hmset(val, {id: val, x: '-1', y: '-1', timestamp: new Date().getTime()});
         res.json({id: val});
+        if (val > 1000) {
+            // restart
+            db.set("count", 0);
+        }
     });
 });
 
